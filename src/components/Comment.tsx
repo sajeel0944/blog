@@ -38,7 +38,7 @@ export default function CommentSection(props: put) {
           />
         </div>
 
-        <h2 className="text-2xl font-bold mb-6 text-center text-white pr-64">
+        <h2 className="text-2xl font-bold mb-6 text-center text-white md:pr-64 sm:pr-48 pr-3">
           Comments
         </h2>
       </div>
