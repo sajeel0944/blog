@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
-  const Query=`*[_type == "blog"][0...6]`;
+  const Query=`*[_type == "blog"] `;
     const getApi=await client.fetch(Query);
   return (
     <>
@@ -17,34 +17,11 @@ export default async function Home() {
 
       {/* friest part */}
       <div className="h-auto  w-full py-20 border- my-5 space-y-20">
-        <div className="border-  h-[790px] sm:h-[680px] md:h-96 lg:px-20 px-5   w-full text-white md:flex md:justify-between">
-          <div className="border- h-96 md:w-[48%] w-full">
-            <Image
-              src={
-                "/picture/blogging-concept-web-blog-social-600nw-2484136087.png"
-              }
-              alt={""}
-              width={1500}
-              height={1000}
-              className="w-full h-96 rounded-xl"
-            />
-          </div>
-          <div className="border- md:h-96 sm:h-72 h-[390px] md:w-[48%] w-full flex items-center sm:px-16 md:px-0">
-            <p className="text-justify text-lg font-bold text-[#97989F]">
-              Welcome to my blog website, a space where ideas come to life!
-              Explore diverse topics, insightful stories, and creative
-              perspectives designed to inform, inspire, and engage readers.
-              Whether youre here for knowledge, entertainment, or inspiration,
-              this platform offers something for everyone. Join the journey and
-              discover content that sparks curiosity and ignites conversations
-            </p>
-          </div>
-        </div>
-
+       
         {/* second part */}
         <div className="space-y-8">
           <h4 className="lg:px-20 px-5 text-4xl font-bold text-white  border- ">
-            BLOG
+            BLOGS
           </h4>
           <div className="border- h-auto w-full lg:px-16 md:px-5 sm:px-4 px-5 flex flex-wrap justify-between items-center space-y-5">
             {/* main */}
@@ -84,35 +61,6 @@ export default async function Home() {
             </div>
             </>
           })}
-
-            {/* main */}
-           
-          </div>
-        </div>
-
-        {/* three part */}
-        <div className="border-">
-          <h5 className="text-white text-4xl font-bold lg:px-20 px-5">
-            Expert customer care
-          </h5>
-          <div className="border-  h-[700px] sm:h-[620px] md:h-96 lg:px-20 px-5   w-full text-white md:flex md:justify-between">
-            <div className="border- md:h-96 sm:h-56 h-[290px] md:w-[48%] w-full flex items-center sm:px-16 md:px-0">
-              <p className="text-justify text-lg font-bold text-[#97989F]">
-                Need some help with your blog? Reach out to our Customer Support
-                Team via email or live chat. They can help you find the perfect
-                blog post layout, help you find your RSS feed, or help you
-                tackle any other blog-related challenge.
-              </p>
-            </div>
-            <div className="border- h-96 md:w-[48%] w-full">
-              <Image
-                src={"/picture/customer-support-750w.png"}
-                alt={""}
-                width={1500}
-                height={1000}
-                className="w-full h-96 rounded-xl"
-              />
-            </div>
           </div>
         </div>
 
