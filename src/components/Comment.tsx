@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import Image from "next/image";
 import { useState, ChangeEvent } from "react";
 
@@ -8,21 +10,23 @@ type put = {
 };
 
 export default function CommentSection(props: put) {
-  // State to store comments
-  const [comments, setComments] = useState<string[]>([]);
-  // State for the new comment input
-  const [newComment, setNewComment] = useState<string>("");
+  // ye nichy input section ky andar form main use ho raha hai or is ki value route.ts ky POST main ja rahe hai
+  const router = useRouter();
 
-  // Function to handle adding a new comment
-  const handleAddComment = (): void => {
-    if (newComment.trim() === "") return; // Prevent adding empty comments
-    setComments([...comments, newComment]); // Add new comment to the comments array
-    setNewComment(""); // Clear the input field
-  };
+  const [name, setName] = useState<string>("");
 
-  // Function to handle input change
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    setNewComment(e.target.value);
+  const handle = async (e: any) => {
+    e.preventDefault();
+
+    const res = await fetch("http://localhost:3000/api/comment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name }),
+    });
+    router.refresh();
+    await res.json();
   };
 
   return (
@@ -44,39 +48,26 @@ export default function CommentSection(props: put) {
       </div>
 
       {/* Input Section */}
-      <div className="flex flex-col sm:flex-row items-center gap-3 mb-6">
+      <form
+        onSubmit={handle}
+        className="flex flex-col sm:flex-row items-center gap-3 mb-6"
+      >
         <input
           type="text"
-          value={newComment}
-          onChange={handleInputChange}
+          value={name}
+          onChange={(event) => {
+            setName(event.target.value);
+          }}
           placeholder="Write a comment..."
           className="flex-1 p-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 bg-[#242535] text-white"
         />
         <button
-          onClick={handleAddComment}
+          type="submit"
           className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all "
         >
           Add
         </button>
-      </div>
-
-      {/* Comments Display Section */}
-      <div className="space-y-4">
-        {comments.length > 0 ? (
-          comments.map((comment, index) => (
-            <div
-              key={index}
-              className="p-3 text-white border rounded-lg shadow-sm bg-[#242535]"
-            >
-              {comment}
-            </div>
-          ))
-        ) : (
-          <p className="text-[#97989F] text-center">
-            No comments yet. Be the first to comment!
-          </p>
-        )}
-      </div>
+      </form>
     </div>
   );
 }

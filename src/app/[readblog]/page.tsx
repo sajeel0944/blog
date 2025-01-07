@@ -5,14 +5,18 @@ import { urlFor } from "@/sanity/lib/image";
 import Information from "@/components/Information";
 import Footer from "@/components/Footer";
 import CommentSection from "@/components/Comment";
+import SeeApiComment from "@/components/seeApiComment";
 
 export const revalidate = 5; // is sy jab change kary gy to 10 second baat change hogi
 
 async function ReadBolg({ params }: { params: { readblog: string } }) {
+
+  // is main sanity sy bata fetch ho rah hai
   const Query = `*[_type == "blog"] `;
   const getApi = await client.fetch(Query);
 
   let paramiter = params.readblog;
+  
 
   return (
     <>
@@ -100,11 +104,14 @@ async function ReadBolg({ params }: { params: { readblog: string } }) {
             </div>
           </div>
 
-          {/*         te comment setion hai */}
+          {/*         ye comment setion hai */}
 
           <CommentSection
             img={`${urlFor(getApi[paramiter].poster.asset._ref)}`}
           />
+
+          {/* is par click karro gy ko comment nazar aye gy */}
+          <SeeApiComment/>
 
           {/* ye second last section hai */}
         </div>
