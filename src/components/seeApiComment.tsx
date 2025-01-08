@@ -1,5 +1,7 @@
+
 async function SeeApiComment() {
   // ye jo nichy  comment section  ky andar is ki value ja rahe hai or ye is vlue UI main show ho
+  // agar is ko local host mai open karna ho to is ki link change karna hai
   const url = await fetch("https://blog-nine-silk-91.vercel.app/api/comment", {
     cache: "no-store",
   });
@@ -17,7 +19,7 @@ async function SeeApiComment() {
           index++;
           return (
             <h6 key={index} className=" h-7 text-lg text-white">
-              {index} &nbsp; {list.name} 
+              {index} &nbsp; {list.name}
             </h6>
           );
         })}
