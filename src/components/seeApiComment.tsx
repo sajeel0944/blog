@@ -1,6 +1,6 @@
 async function SeeApiComment() {
   // ye jo nichy  comment section  ky andar is ki value ja rahe hai or ye is vlue UI main show ho
-  const url = await fetch("http://localhost:3000/api/comment", {
+  const url = await fetch("https://blog-nine-silk-91.vercel.app/api/comment", {
     cache: "no-store",
   });
 

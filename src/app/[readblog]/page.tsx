@@ -110,7 +110,7 @@ async function ReadBolg({ params }: { params: { readblog: string } }) {
             img={`${urlFor(getApi[paramiter].poster.asset._ref)}`}
           />
 
-          {/* is par click karro gy ko comment nazar aye gy */}
+          {/* is main comment nazar arahy hai  */}
           <SeeApiComment/>
 
           {/* ye second last section hai */}
@@ -130,3 +130,6 @@ async function ReadBolg({ params }: { params: { readblog: string } }) {
 }
 
 export default ReadBolg;
+
+
+// https://blog-nine-silk-91.vercel.app/

@@ -18,7 +18,7 @@ export default function CommentSection(props: put) {
   const handle = async (e: any) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:3000/api/comment", {
+    const res = await fetch("https://blog-nine-silk-91.vercel.app/api/comment", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
